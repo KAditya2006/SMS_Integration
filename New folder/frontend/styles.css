@@ -1,0 +1,276 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+}
+
+.screen {
+    display: none;
+}
+
+.screen.active {
+    display: block;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.card {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.subtitle {
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 14px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+input {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #e1e5e9;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+input:invalid {
+    border-color: #ff4757;
+}
+
+.btn {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 10px;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+}
+
+.btn-primary:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-secondary {
+    background: transparent;
+    color: #667eea;
+    border: 2px solid #667eea;
+}
+
+.btn-secondary:hover:not(:disabled) {
+    background: #667eea;
+    color: white;
+}
+
+.btn-secondary:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.btn-logout {
+    background: #ff4757;
+    color: white;
+    margin-top: 20px;
+}
+
+.btn-logout:hover {
+    background: #ff3742;
+    transform: translateY(-2px);
+}
+
+.timer {
+    margin: 20px 0;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #666;
+}
+
+.welcome-message {
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+.welcome-message h2 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 22px;
+}
+
+.user-info {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.info-item {
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.info-item strong {
+    color: #333;
+}
+
+.info-item span {
+    color: #666;
+}
+
+/* Loading Spinner */
+.spinner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.spinner.hidden {
+    display: none;
+}
+
+.spinner-icon {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #667eea;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Toast Messages */
+.toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 20px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 500;
+    z-index: 1001;
+    animation: slideIn 0.3s ease-out;
+    max-width: 300px;
+}
+
+.toast.hidden {
+    display: none;
+}
+
+.toast.success {
+    background: #2ed573;
+}
+
+.toast.error {
+    background: #ff4757;
+}
+
+.toast.info {
+    background: #3742fa;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .card {
+        padding: 30px 20px;
+        margin: 10px;
+    }
+    
+    h1 {
+        font-size: 24px;
+    }
+    
+    .btn {
+        padding: 12px;
+    }
+    
+    .toast {
+        right: 10px;
+        left: 10px;
+        max-width: none;
+    }
+}

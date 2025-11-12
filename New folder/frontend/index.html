@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Login System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Login Screen -->
+        <div id="login-screen" class="screen active">
+            <div class="card">
+                <h1>Welcome Back</h1>
+                <p class="subtitle">Enter your mobile number to continue</p>
+                
+                <form id="login-form">
+                    <div class="input-group">
+                        <label for="phone">Mobile Number</label>
+                        <input 
+                            type="tel" 
+                            id="phone" 
+                            placeholder="+1234567890" 
+                            required
+                            pattern="^\+[1-9]\d{1,14}$"
+                            title="Please enter a valid phone number with country code (e.g., +1234567890)"
+                        >
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" id="send-otp-btn">
+                        Send OTP
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- OTP Verification Screen -->
+        <div id="otp-screen" class="screen">
+            <div class="card">
+                <h1>Verify OTP</h1>
+                <p class="subtitle">Enter the 6-digit code sent to <span id="phone-display"></span></p>
+                
+                <form id="otp-form">
+                    <div class="input-group">
+                        <label for="otp">OTP Code</label>
+                        <input 
+                            type="text" 
+                            id="otp" 
+                            placeholder="123456" 
+                            maxlength="6"
+                            pattern="[0-9]{6}"
+                            title="Please enter the 6-digit OTP"
+                            required
+                        >
+                    </div>
+                    
+                    <div class="timer" id="timer">
+                        Resend OTP in <span id="countdown">60</span>s
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" id="verify-otp-btn">
+                        Verify OTP
+                    </button>
+                    
+                    <button type="button" class="btn btn-secondary" id="resend-otp-btn" disabled>
+                        Resend OTP
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Dashboard Screen -->
+        <div id="dashboard-screen" class="screen">
+            <div class="card">
+                <h1>Dashboard</h1>
+                <div class="welcome-message">
+                    <h2>Welcome, <span id="user-phone"></span>!</h2>
+                    <p>You have successfully logged in using OTP verification.</p>
+                </div>
+                
+                <div class="user-info">
+                    <div class="info-item">
+                        <strong>Last Login:</strong>
+                        <span id="last-login"></span>
+                    </div>
+                    <div class="info-item">
+                        <strong>Account Created:</strong>
+                        <span id="account-created"></span>
+                    </div>
+                </div>
+                
+                <button class="btn btn-logout" id="logout-btn">
+                    Logout
+                </button>
+            </div>
+        </div>
+
+        <!-- Loading Spinner -->
+        <div id="loading-spinner" class="spinner hidden">
+            <div class="spinner-icon"></div>
+        </div>
+
+        <!-- Toast Messages -->
+        <div id="toast" class="toast hidden"></div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
